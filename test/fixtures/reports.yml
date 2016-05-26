@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reporterName: MyString
+  reporterCel: MyString
+  reporterPhone: MyString
+  reporterEmail: MyString
+  reporterObservations: MyText
+  reference: 
+
+two:
+  reporterName: MyString
+  reporterCel: MyString
+  reporterPhone: MyString
+  reporterEmail: MyString
+  reporterObservations: MyText
+  reference: 
