@@ -9,10 +9,10 @@ class PetsController < ApplicationController
       if user
         render json: user.pets, status: :ok
       else
-        render json: {message: 'There was an error getting pets, please try it again'}, status: :bad_request
+        render json: {message: '**There was an error getting pets, please try it again'}, status: :bad_request
       end
     else
-      render json: {message: 'There was an error getting pets, please try it again'}, status: :bad_request
+      render json: {message: '!!There was an error getting pets, please try it again'}, status: :bad_request
     end
   end
 
