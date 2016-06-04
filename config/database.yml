@@ -14,3 +14,7 @@ test:
   pool: 5
   username: matiasdim
   password:
+
+production:
+  encoding: utf8
+  pool: 15
