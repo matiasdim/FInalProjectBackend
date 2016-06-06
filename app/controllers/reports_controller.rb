@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
     if !params[:email].nil?
       reports = Report.where(user_email: params[:email])
       if reports
-        render json: reports, status: :ok
+        render json: reports, include: :pet, status: :ok
       else
         render json: {message: 'There are no reports to show'}, status: :ok
       end
