@@ -36,7 +36,7 @@ class ReportsController < ApplicationController
   # POST /reports
   # POST /reports.json
   def create
-    if !params[:reporter_name].nil? && !params[:pet_id].nil? && (!params[:reporter_cel].nil? || !params[:reporter_phone].nil? || !params[:reporter_email].nil? || !params[:reporter_observations].nil?)
+    if !params[:reporter_name].nil? && !params[:pet_id].nil? && !params[:lat].nil? && !params[:lon].nil? && (!params[:reporter_cel].nil? || !params[:reporter_phone].nil? || !params[:reporter_email].nil? || !params[:reporter_observations].nil?)
       pet = Pet.find_by_id(params[:pet_id])
       if pet
         report = pet.reports.create(reporterName: params[:reporter_name],
@@ -44,6 +44,8 @@ class ReportsController < ApplicationController
                                     reporterPhone: params[:reporter_phone],
                                     reporterEmail: params[:reporter_email],
                                     reporterObservations: params[:reporter_observations],
+                                    lat: params[:lat],
+                                    lon: params[:lon],
                                     user_email: pet.user.email)
         if report
           render json: report, include: :pet, status: :created #with user render json: report, :include => {:pet => {:include => :user}}, status: :created
