@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
 
   def index
     if !params[:email].nil?
-      reports = Report.find_by_user_email(params[:email])
+      reports = Report.where(user_email: params[:email])
       if reports
         render json: reports, status: :ok
       else
