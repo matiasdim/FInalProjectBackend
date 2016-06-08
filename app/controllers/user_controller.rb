@@ -6,8 +6,12 @@ class UserController < ApplicationController
 	# POST /users/create
 	def create
 
-		if !params[:email].nil? && !params[:password].nil?
-			user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
+		if !params[:email].nil? && !params[:password].nil? && !params[:name].nil? && !params[:mobile].nil?
+			user = User.new(:email => params[:email],
+											:password => params[:password],
+											:password_confirmation => params[:password],
+											:name => params[:name],
+											:mobile => params[:mobile])
 			if user.save
 				sign_in user, :bypass => true 
 				render json: user, status: :created

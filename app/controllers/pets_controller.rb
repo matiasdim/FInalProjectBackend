@@ -23,7 +23,7 @@ class PetsController < ApplicationController
     if !params[:id].nil?
       pet = Pet.find_by_id(params[:id])
       if pet
-        render json: pet, status: :ok
+        render json: pet, include: :user, status: :ok
       else
         render json: {message: 'Pet doesn\'t exist'}, status: :bad_request
       end
