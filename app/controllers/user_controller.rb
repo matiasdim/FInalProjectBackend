@@ -38,7 +38,7 @@ class UserController < ApplicationController
 #					else
 				#		if sign_in user, :bypass => true
 							#reports = Report.where(user_email: user.email)
-							user.update_attributes(reports_count: reports.count) if !reports.nil?
+							#user.update_attributes(reports_count: reports.count) if !reports.nil?
 							render json: user, status: :accepted
 				#		end
 	#				end
