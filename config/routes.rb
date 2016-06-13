@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   post '/users/create' => 'user#create'
-  put '/users/update' => 'user#update'
+  post '/users/update' => 'user#update'
   put '/users/update/reports' => 'user#updateReportsNum'
   root to: "home#index"
 end

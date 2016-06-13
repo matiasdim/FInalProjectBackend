@@ -25,7 +25,7 @@ class UserController < ApplicationController
 	end
 
 	# Login User
-	# PUT /users/update
+	# POST /users/update
 	def update
 		if !params[:email].nil? && !params[:password].nil?
 			user = User.find_by_email(params[:email])
