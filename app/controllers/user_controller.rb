@@ -13,7 +13,7 @@ class UserController < ApplicationController
 											:name => params[:name],
 											:mobile => params[:mobile])
 			if user.save
-				sign_in user, :bypass => true 
+				sign_in user, :bypass => true
 				render json: user, status: :created
 			else
 				render json: {message: 'User exists, or Password doesn\'t match'}, status: :not_found
@@ -37,6 +37,8 @@ class UserController < ApplicationController
 						render json: user, status: :accepted
 					else
 						if sign_in user, :bypass => true
+							reports = Report.where(user_email: user.email)
+							user.update_attributes(reports_count: reports.count) if !reports.nil?
 							render json: user, status: :accepted
 						end
 					end
