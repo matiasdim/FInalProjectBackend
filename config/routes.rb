@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   post '/users/create' => 'user#create'
   put '/users/update' => 'user#update'
+  put '/users/update/reports' => 'user#updateReportsNum'
   root to: "home#index"
 end

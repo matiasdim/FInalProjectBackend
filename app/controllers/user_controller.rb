@@ -37,7 +37,7 @@ class UserController < ApplicationController
 						render json: user, status: :accepted
 					else
 						if sign_in user, :bypass => true
-							reports = Report.where(user_email: user.email)
+							#reports = Report.where(user_email: user.email)
 							user.update_attributes(reports_count: reports.count) if !reports.nil?
 							render json: user, status: :accepted
 						end
@@ -50,6 +50,26 @@ class UserController < ApplicationController
 			end
 		else
 			render json: {message: 'Username not found or Password don\'t provided'}, status: :bad_request
+		end
+	end
+
+	# Login User
+	# PUT /users/update/reports
+	def updateReportsNum
+
+		if !params[:email].nil? || !params[:reports_num].nil?
+			user = User.find_by_email(params[:email])
+			if user
+				if user.update_attributes(reports_count: params[:reports_num].to_i)
+					render json: user, status: :ok
+				else
+					render json: {message: 'User not updated'}, status: :not_found
+				end
+			else
+				render json: {message: 'User not found'}, status: :not_found
+			end
+		else
+			render json: {message: 'Username don\'t provided'}, status: :bad_request
 		end
 	end
 
