@@ -33,15 +33,15 @@ class UserController < ApplicationController
 			if user
 			valid_password = user.valid_password?(params[:password])
 				if valid_password
-					if current_user?(user) && current_user.email == user.email
-						render json: user, status: :accepted
-					else
-						if sign_in user, :bypass => true
+#					if current_user?(user) && current_user.email == user.email
+#						render json: user, status: :accepted
+#					else
+				#		if sign_in user, :bypass => true
 							#reports = Report.where(user_email: user.email)
 							user.update_attributes(reports_count: reports.count) if !reports.nil?
 							render json: user, status: :accepted
-						end
-					end
+				#		end
+	#				end
 				else
 					render json: {message: 'Invalid password'}, status: :unauthorized
 				end
