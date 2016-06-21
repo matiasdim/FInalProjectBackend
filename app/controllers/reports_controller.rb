@@ -48,8 +48,6 @@ class ReportsController < ApplicationController
                                     lon: params[:lon],
                                     user_email: pet.user.email)
         if report
-          @user = pet.user
-          ReportMailer.sample_email(@user).deliver
           render json: report, include: :pet, status: :created #with user render json: report, :include => {:pet => {:include => :user}}, status: :created
         else
           render json: {message: 'There was an error saving report, please try it again'}, status: :bad_request
