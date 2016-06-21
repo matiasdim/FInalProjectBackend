@@ -11,8 +11,7 @@ class UserController < ApplicationController
 											:password => params[:password],
 											:password_confirmation => params[:password],
 											:name => params[:name],
-											:mobile => params[:mobile], 
-											:reports_count => 0)
+											:mobile => params[:mobile])
 			if user.save
 				sign_in user, :bypass => true
 				render json: user, status: :created
